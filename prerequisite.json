@@ -12,6 +12,12 @@
         "location": {
             "type": "string",
             "defaultValue": "West US 2",
+            "allowedValues": [
+                "West US 2",
+                "East US 2",
+                "West Europe",
+                "Central India"
+            ],
             "metadata": {
                 "description": "Location for all resources."
             }
