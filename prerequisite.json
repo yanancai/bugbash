@@ -16,18 +16,6 @@
                 "description": "Location for all resources."
             }
         },
-        "ContainerName": {
-            "type": "string",
-            "metadata": {
-                "description": "The filesystem name in ADLS Gen 2 account."
-            }
-        },
-        "SecretName": {
-            "type": "string",
-            "metadata": {
-                "description": "The secret name in the Key Vault that stores external Hive Metastore password."
-            }
-        },
         "SQLadministratorLogin": {
             "type": "string",
             "metadata": {
@@ -91,7 +79,29 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
             "apiVersion": "2019-06-01",
-            "name": "[concat(variables('storageName'), '/default/', parameters('ContainerName'))]",
+            "name": "[concat(variables('storageName'), '/default/', 'container1')]",
+            "dependsOn": [
+                "[variables('storageName')]"
+            ],
+            "properties": {
+                "publicAccess": "None"
+            }
+        },
+                {
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(variables('storageName'), '/default/', 'container2')]",
+            "dependsOn": [
+                "[variables('storageName')]"
+            ],
+            "properties": {
+                "publicAccess": "None"
+            }
+        },
+                {
+            "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(variables('storageName'), '/default/', 'container3')]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -185,7 +195,7 @@
         {
             "type": "Microsoft.KeyVault/vaults/secrets",
             "apiVersion": "2019-09-01",
-            "name": "[concat(variables('keyVaultName'), '/', parameters('SecretName'))]",
+            "name": "[concat(variables('keyVaultName'), '/', 'hmssecret')]",
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
