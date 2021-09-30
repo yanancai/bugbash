@@ -224,6 +224,7 @@
                 "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
                 "[variables('msiName')]",
                 "[variables('storageName')]",
+                "[resourceId('Microsoft.Sql/servers/databases', variables('sqlSeverName'), variables('sqlDBName'))]",
                 "[resourceId('Microsoft.Sql/servers', variables('sqlSeverName'))]"
             ]
         },      
@@ -241,6 +242,7 @@
                 "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
                 "[variables('msiName')]",
                 "[variables('storageName')]",
+                "[resourceId('Microsoft.Sql/servers/databases', variables('sqlSeverName'), variables('sqlDBName'))]",
                 "[resourceId('Microsoft.Sql/servers', variables('sqlSeverName'))]"
             ]
         }
